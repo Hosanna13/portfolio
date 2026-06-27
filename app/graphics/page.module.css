@@ -1,93 +1,122 @@
-/*  graphics page styles */
 @import url('../../public/globals.css');
-.main {
-  position: relative;
-  min-height: 100vh;
-  width: 100%;
-  background: #ffffff;
-  overflow: hidden;
-}
 
-/* ---- navigation ---- */
-.nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 40;
-  padding: 2rem 3rem;
-}
-
-.navList {
+.graphicsContent {
+  width: min(1140px, 100%);
   display: flex;
-  gap: 2.5rem;
-  list-style: none;
-  padding: 0;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 0 1.5rem;
+}
+
+.headerBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.pageTitle {
+  font-family: var(--font-sans);
+  font-size: clamp(3rem, 4vw, 4.5rem);
   margin: 0;
 }
 
-.navLink {
-  font-family: var(--font-handwritten);
-  font-size: 1.5rem;
-  color: #000000;
-  transition: opacity 0.2s ease;
+.pageLead {
+  margin: 0;
+  max-width: 760px;
+  line-height: 1.9;
+  color: #333333;
 }
 
-.navLink:hover {
-  opacity: 0.6;
+.bookHint {
+  margin: 0;
+  color: #666666;
+  font-size: 0.96rem;
 }
 
-/* --- development + apple word animation ---- */ 
-.stage {
+.book {
+  position: relative;
+  display: grid;
+  place-items: center;
+  gap: 1rem;
+  min-height: 520px;
+  padding: 2rem 0;
+}
+
+.bookPage {
+  --offset: calc(var(--page-index) * -22px);
+  width: min(380px, 100%);
+  min-height: 460px;
+  padding: 1.7rem;
+  background: #ffffff;
+  border-radius: 1.6rem;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: calc(100 - var(--page-index));
+  transform-origin: left center;
+  transform: translateX(var(--offset)) rotateY(calc(var(--page-index) * -4deg));
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.bookPage:hover {
+  transform: translateX(var(--offset)) translateX(12px) rotateY(-18deg);
+  box-shadow: 0 32px 100px rgba(0, 0, 0, 0.14);
+}
+
+.pageCover {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
+  gap: 0.85rem;
+  margin-bottom: 1.6rem;
 }
 
-.devMessage {
+.pageSubtitle {
+  font-family: var(--font-handwritten);
+  font-size: 1rem;
+  color: #8a8a8a;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+
+.bookTitle {
   font-family: var(--font-sans);
-  font-weight: 600;
-  font-size: 3.5rem;
-  letter-spacing: -0.02em;
+  font-size: 1.75rem;
+  margin: 0;
   line-height: 1.1;
-  color: #1a1a1a;
+}
+
+.pagePreview {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem 1rem;
-  justify-content: center;
-  max-width: 900px;
-  text-align: center;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-.word {
-  display: inline-block;
-  opacity: 0;
-  filter: blur(12px);
-  transform: translateY(30px);
-  animation: appleReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+.imagePlaceholder {
+  min-height: 220px;
+  border-radius: 1.2rem;
+  background: linear-gradient(180deg, #ececec 0%, #d9d9d9 100%);
+  display: grid;
+  place-items: center;
+  color: #6f6f6f;
+  font-size: 0.95rem;
+  font-family: var(--font-handwritten);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
 }
 
-@keyframes appleReveal {
-  0% {
-    opacity: 0;
-    filter: blur(12px);
-    transform: translateY(30px);
-  }
-  100% {
-    opacity: 1;
-    filter: blur(0);
-    transform: translateY(0);
-  }
+.pagePreview p {
+  margin: 0;
+  color: #444444;
+  line-height: 1.75;
 }
 
-/* reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  .word {
-    opacity: 1;
-    filter: none;
+@media (max-width: 860px) {
+  .bookPage {
+    width: min(100%, 100%);
     transform: none;
-    animation: none;
+  }
+
+  .bookPage:hover {
+    transform: none;
   }
 }

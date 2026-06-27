@@ -1,45 +1,49 @@
 'use client';
-import styles from './page.module.css';       
+import PageShell from '../components/PageShell';
+import styles from './page.module.css';
 
-// tech Page
+const techCards = [
+  {
+    title: 'Log.ai',
+    subtitle: 'Design & Development',
+    description: 'A web app with AI-powered reflections, progress notes, and visual summaries.',
+  },
+  {
+    title: 'Grade Predictor',
+    subtitle: 'Next.js + Tailwind',
+    description: 'A clean project card structure for grade tracking and data visualization.',
+  },
+  {
+    title: 'AE-SYNC',
+    subtitle: 'Audio & Transcript Flow',
+    description: 'A placeholder card for a media workflow app that syncs audio with text layers.',
+  },
+];
+
 export default function Tech() {
-const navLinks = [
-  { label: 'about me', href: '/about' },
-  { label: 'graphics', href: '/graphics' },
-  { label: 'videos', href: '/videos' },
-  { label: 'tech', href: '/tech' },
-];   
-const words = ['🧑🏾‍💻 ', 'In ', 'Development', ' - ', 'Launching ', 'Soon' ];
+  return (
+    <PageShell>
+      <div className={styles.techContent}>
+        <div className={styles.headerBlock}>
+          <h1 className={styles.pageTitle}>Tech Projects</h1>
+          <p className={styles.pageLead}>
+            These cards are easy to add or remove. Update the <code>techCards</code> array.
+          </p>
+        </div>
 
- return (
-   <main className={styles.main}>
-        <nav className={styles.nav}> 
-            <ul className={styles.navList}>
-                {navLinks.map((link) => (
-                    <li key = {link.href}>
-                        <a href={link.href} className={styles.navLink}>
-                            {link.label}
-                        </a>
-                    </li>
-                ))}
-            </ul>
-        </nav>
-
-        <div className={styles.stage}>
-            {/* adding animation bc i can  */}
-          <h1 className={styles.devMessage}>
-          {words.map((word, i) => (
-            <span
-              key={i}
-              className={styles.word}
-              style={{ animationDelay: `${i * 0.15}s` }}
-            >
-              {word}
-            </span>
+        <div className={styles.cardGrid}>
+          {techCards.map((card) => (
+            <article key={card.title} className={styles.techCard}>
+              <div className={styles.cardIcon}>{card.title.charAt(0)}</div>
+              <div className={styles.cardBody}>
+                <p className={styles.cardSubtitle}>{card.subtitle}</p>
+                <h2>{card.title}</h2>
+                <p>{card.description}</p>
+              </div>
+            </article>
           ))}
-        </h1>
+        </div>
       </div>
-    </main>
+    </PageShell>
   );
-
 }

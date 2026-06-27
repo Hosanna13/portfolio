@@ -1,45 +1,59 @@
 'use client';
-import styles from './page.module.css';       
+import PageShell from '../components/PageShell';
+import styles from './page.module.css';
 
-// video Page
+const videoItems = [
+  {
+    title: 'Campus Promo Reel',
+    subtitle: 'Short motion edit',
+    status: 'placeholder',
+  },
+  {
+    title: 'Portfolio Intro',
+    subtitle: 'Brand teaser',
+    status: 'coming soon',
+  },
+  {
+    title: 'Event Highlights',
+    subtitle: 'Social cut',
+    status: 'placeholder',
+  },
+  {
+    title: 'Vlog Sequence',
+    subtitle: 'Story edit',
+    status: 'placeholder',
+  },
+];
+
 export default function Video() {
-const navLinks = [
-  { label: 'about me', href: '/about' },
-  { label: 'graphics', href: '/graphics' },
-  { label: 'videos', href: '/videos' },
-  { label: 'tech', href: '/tech' },
-];   
-const words = ['🎬 ', 'In ', 'Development', ' - ', 'Launching ', 'Soon', '📸 ' ];
+  return (
+    <PageShell>
+      <div className={styles.videoContent}>
+        <div className={styles.videoHeader}>
+          <div>
+            <h1 className={styles.pageTitle}>Video Placeholders</h1>
+            <p className={styles.pageLead}>
+              A simple placeholder gallery for your upcoming edits. Add or remove
+              cards by updating the <code>videoItems</code> array.
+            </p>
+          </div>
+        </div>
 
- return (
-   <main className={styles.main}>
-        <nav className={styles.nav}> 
-            <ul className={styles.navList}>
-                {navLinks.map((link) => (
-                    <li key = {link.href}>
-                        <a href={link.href} className={styles.navLink}>
-                            {link.label}
-                        </a>
-                    </li>
-                ))}
-            </ul>
-        </nav>
-
-        <div className={styles.stage}>
-            {/* adding animation bc i can  */}
-          <h1 className={styles.devMessage}>
-          {words.map((word, i) => (
-            <span
-              key={i}
-              className={styles.word}
-              style={{ animationDelay: `${i * 0.15}s` }}
-            >
-              {word}
-            </span>
+        <div className={styles.videoGrid}>
+          {videoItems.map((item) => (
+            <article key={item.title} className={styles.videoCard}>
+              <div className={styles.videoPreview}>
+                <span>{item.subtitle}</span>
+                <div className={styles.playButton}>▶</div>
+              </div>
+              <div className={styles.videoInfo}>
+                <h2>{item.title}</h2>
+                <p>{item.status}</p>
+              </div>
+            </article>
           ))}
-        </h1>
+        </div>
       </div>
-    </main>
+    </PageShell>
   );
-
 }
