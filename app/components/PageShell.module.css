@@ -1,0 +1,46 @@
+@import url('../../public/globals.css');
+
+.main {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  background: #ffffff;
+  overflow-x: hidden;
+}
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 40;
+  padding: 2rem 3rem;
+}
+
+.navList {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navLink {
+  font-family: var(--font-handwritten);
+  font-size: 1.5rem;
+  color: #000000;
+  transition: opacity 0.2s ease;
+}
+
+.navLink:hover {
+  opacity: 0.6;
+}
+
+.stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 10rem 2rem 4rem;
+}

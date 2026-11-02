@@ -1,0 +1,10 @@
+.page {
+  position: relative;
+  overflow: hidden;
+  background: #f4f1f1;
+}
+
+/* contain, not cover: never crop a flyer, even the 9:16 story-sized ones. */
+.flyer {
+  object-fit: contain;
+}
