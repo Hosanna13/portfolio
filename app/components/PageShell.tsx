@@ -8,7 +8,13 @@ const navLinks = [
   { label: 'tech', href: '/tech' },
 ];
 
-export default function PageShell({ children }: { children: React.ReactNode }) {
+export default function PageShell({
+  children,
+  stageClassName,
+}: {
+  children: React.ReactNode;
+  stageClassName?: string;
+}) {
   return (
     <main className={styles.main}>
       <nav className={styles.nav}>
@@ -22,7 +28,7 @@ export default function PageShell({ children }: { children: React.ReactNode }) {
           ))}
         </ul>
       </nav>
-      <div className={styles.stage}>{children}</div>
+      <div className={`${styles.stage} ${stageClassName ?? ''}`}>{children}</div>
     </main>
   );
 }

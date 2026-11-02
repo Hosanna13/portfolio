@@ -1,0 +1,46 @@
+.wall {
+  width: 100%;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.column {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.tile {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: none;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #eeeeee;
+  cursor: zoom-in;
+  transition: filter 0.2s ease;
+}
+
+.tile:hover {
+  filter: brightness(0.9);
+}
+
+/* width 100% + height auto = the tile takes the video's own shape. */
+.preview {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.placeholder {
+  width: 100%;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(160deg, #ececec, #d9d9d9);
+  color: #9a9a9a;
+  font-size: 1.5rem;
+}
