@@ -44,3 +44,14 @@
   color: #9a9a9a;
   font-size: 1.5rem;
 }
+
+@media (max-width: 600px) {
+  .wall,
+  .column {
+    gap: 12px;
+  }
+
+  .tile {
+    border-radius: 12px;
+  }
+}

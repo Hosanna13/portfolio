@@ -17,8 +17,12 @@ export default function VideoWall({ videos }: { videos: Video[] }) {
     const wall = wallRef.current;
     if (!wall) return;
     const observer = new ResizeObserver(([entry]) => {
+      const width = entry.contentRect.width;
+      const count = width < 640
+        ? (width >= 320 ? 2 : 1)
+        : Math.floor(width / MIN_COLUMN_WIDTH);
       setColumnCount(
-        Math.max(1, Math.min(MAX_COLUMN_COUNT, Math.floor(entry.contentRect.width / MIN_COLUMN_WIDTH))),
+        Math.max(1, Math.min(MAX_COLUMN_COUNT, count)),
       );
     });
     observer.observe(wall);

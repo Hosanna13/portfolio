@@ -44,3 +44,19 @@
   min-height: 100vh;
   padding: 10rem 2rem 4rem;
 }
+
+@media (max-width: 600px) {
+  .nav {
+    padding: 1.25rem 1rem;
+  }
+
+  .navList {
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .navLink {
+    font-size: clamp(0.95rem, 4vw, 1.125rem);
+    white-space: nowrap;
+  }
+}
