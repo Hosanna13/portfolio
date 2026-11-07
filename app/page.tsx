@@ -31,7 +31,7 @@ export default function HomePage() {
   const navLinks = [
     { label: 'about me', href: '/about' },
     { label: 'graphics', href: '/graphics' },
-    { label: 'video', href: '/video' },
+    { label: 'videos', href: '/videos' },
     { label: 'tech', href: '/tech' },
   ];
 
